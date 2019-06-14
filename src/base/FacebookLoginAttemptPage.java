@@ -4,31 +4,32 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class FacebookLoginAttemptPage extends BasePage {
-
-    @FindBy(id = "email")
-    public WebElement inputEmail;
-
-    @FindBy(id = "pass")
-    public WebElement inputPassword;
+public class FacebookLoginAttemptPage extends FacebookLoginPage {
 
     @FindBy(id = "loginbutton")
     public WebElement buttonLogIn;
+
+    @FindBy(xpath = "//div[@role='alert' and text()='The email or phone number you’ve entered doesn’t match any account. ']")
+    public WebElement wrongCredentialsAlert;
 
     public FacebookLoginAttemptPage(WebDriver iDriver) {
         super(iDriver);
     }
 
-    public void btnLoginClick() {
-        buttonLogIn.click();
+    public FacebookHomePage btnLoginClick(){
+        webElement = buttonLogIn;
+        clickButton();
+        return initFacebookHomePage();
     }
 
-    public void inputEnterEmail(String userEmail){
-        inputEmail.sendKeys(userEmail);
+    public FacebookLoginAttemptPage clickLoginBtnFail() {
+        webElement = buttonLogIn;
+        clickButton();
+        return initFacebookLoginAttemptPage();
     }
 
-    public void inputEnterPassword(String userPassword){
-        inputPassword.sendKeys(userPassword);
+    public boolean isWrongCredentialsAlertDisplayed(){
+        webElement = wrongCredentialsAlert;
+        return isElementDisplayed();
     }
-
 }

@@ -2,26 +2,39 @@ package tests;
 
 import base.BaseTest;
 
+import base.FacebookHomePage;
+import base.FacebookLoginAttemptPage;
 import org.testng.annotations.*;
-public class FirstTests extends BaseTest {
 
+public class FacebookTests extends BaseTest {
+
+    private FacebookLoginAttemptPage facebookLoginAttemptPage;
+    private FacebookHomePage facebookHomePage;
 
     @Test
-    public void firstTest() throws InterruptedException {
+    public void loginFail() throws InterruptedException {
 
-        faceBookPage.inputEnterEmail("someemail@address.com");
-        faceBookPage.inputEnterPassword("pass");
-        faceBookPage.btnLoginClick();
+        String userEmail = "someemail@address.com";
+        String userPass = "pass";
+
+        facebookLoginPage.enterEmail(userEmail);
+        facebookLoginPage.enterPassword(userPass);
+        facebookLoginAttemptPage = facebookLoginPage.clickLoginBtnFail();
+
+        facebookLoginAttemptPage.enterEmail(userEmail);
+        facebookLoginAttemptPage.enterPassword(userPass);
+        facebookLoginAttemptPage.clickLoginBtnFail();
+
         Thread.sleep(3000);
 
     }
 
     @Test
-    public void secondTest() throws InterruptedException {
+    public void loginSuccess() throws InterruptedException {
 
-        faceBookPage.inputEnterEmail("someemail@address.com");
-        faceBookPage.inputEnterPassword("pass");
-        faceBookPage.btnLoginClick();
+        facebookLoginPage.enterEmail("someemail@address.com");
+        facebookLoginPage.enterPassword("pass");
+        facebookHomePage = facebookLoginPage.btnLoginClick();
         Thread.sleep(3000);
 
     }

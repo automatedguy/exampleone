@@ -19,17 +19,26 @@ public class FacebookLoginPage extends BasePage{
         super(iDriver);
     }
 
-    public FacebookLoginAttemptPage btnLoginClick() {
-        buttonLogIn.click();
-        return initFacebookLoginAttemptPage(driver);
+    public FacebookHomePage btnLoginClick() {
+        webElement = buttonLogIn;
+        clickButton();
+        return initFacebookHomePage();
     }
 
-    public void inputEnterEmail(String userEmail){
-        inputEmail.sendKeys(userEmail);
+    public FacebookLoginAttemptPage clickLoginBtnFail() {
+        webElement = buttonLogIn;
+        clickButton();
+        return initFacebookLoginAttemptPage();
     }
 
-    public void inputEnterPassword(String userPassword){
-        inputPassword.sendKeys(userPassword);
+    public void enterEmail(String userEmail){
+        webElement = inputEmail;
+        enterText(userEmail);
+    }
+
+    public void enterPassword(String userPassword){
+        webElement = inputPassword;
+        enterText(userPassword);
     }
 
 }
