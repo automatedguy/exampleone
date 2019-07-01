@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import pages.FacebookLoginPage;
 
 import static base.Settings.*;
 
@@ -21,6 +22,7 @@ public class BaseTest {
         System.setProperty("webdriver.chrome.driver", RESOURCES + CHROMEDRIVER);
         chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("start-maximized");
+        chromeOptions.addArguments("--disable-notifications");
         driver = new ChromeDriver(chromeOptions);
         basePage = new BasePage(driver);
         facebookLoginPage = basePage.initFacebookLoginPage();

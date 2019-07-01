@@ -3,6 +3,7 @@ package base;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import pages.*;
 
 public class BasePage {
 
@@ -41,5 +42,17 @@ public class BasePage {
 
     public FacebookHomePage initFacebookHomePage(){
         return PageFactory.initElements(driver, FacebookHomePage.class);
+    }
+
+    public FacebookCreatePost initFacebookCreatePost(){
+        return PageFactory.initElements(driver, FacebookCreatePost.class);
+    }
+
+    public FacebookCreatePostBox initFacebookCreatePostBox(){
+        return PageFactory.initElements(driver, FacebookCreatePostBox.class);
+    }
+
+    public FacebookNavigationBar initFacebookNavigationBar(){
+        return PageFactory.initElements(driver, FacebookNavigationBar.class);
     }
 }

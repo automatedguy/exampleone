@@ -1,10 +1,11 @@
-package base;
+package pages;
 
+import base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class FacebookLoginPage extends BasePage{
+public class FacebookLoginPage extends BasePage {
 
     @FindBy(id = "email")
     public WebElement inputEmail;
@@ -19,10 +20,10 @@ public class FacebookLoginPage extends BasePage{
         super(iDriver);
     }
 
-    public FacebookHomePage btnLoginClick() {
+    public FacebookNavigationBar clickOnLoginButton() {
         webElement = buttonLogIn;
         clickButton();
-        return initFacebookHomePage();
+        return initFacebookNavigationBar();
     }
 
     public FacebookLoginAttemptPage clickLoginBtnFail() {

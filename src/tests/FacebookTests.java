@@ -1,40 +1,26 @@
 package tests;
 
 import base.BaseTest;
-
-import base.FacebookHomePage;
-import base.FacebookLoginAttemptPage;
+import pages.FacebookCreatePost;
 import org.testng.annotations.*;
+import pages.FacebookCreatePostBox;
+import pages.FacebookNavigationBar;
 
 public class FacebookTests extends BaseTest {
 
-    private FacebookLoginAttemptPage facebookLoginAttemptPage;
-    private FacebookHomePage facebookHomePage;
+    private FacebookNavigationBar facebookNavigationBar;
+    private FacebookCreatePost facebookCreatePost;
+    private FacebookCreatePostBox facebookCreatePostBox;
 
     @Test
-    public void loginFail() throws InterruptedException {
+    public void postSomething() throws InterruptedException {
 
-        String userEmail = "someemail@address.com";
-        String userPass = "pass";
+        facebookLoginPage.enterEmail("59897505100");
+        facebookLoginPage.enterPassword("jona1981br");
+        facebookNavigationBar = facebookLoginPage.clickOnLoginButton();
+        facebookCreatePost = facebookNavigationBar.clickOnStart();
+        facebookCreatePostBox = facebookCreatePost.clickOnCreatePost();
 
-        facebookLoginPage.enterEmail(userEmail);
-        facebookLoginPage.enterPassword(userPass);
-        facebookLoginAttemptPage = facebookLoginPage.clickLoginBtnFail();
-
-        facebookLoginAttemptPage.enterEmail(userEmail);
-        facebookLoginAttemptPage.enterPassword(userPass);
-        facebookLoginAttemptPage.clickLoginBtnFail();
-
-        Thread.sleep(3000);
-
-    }
-
-    @Test
-    public void loginSuccess() throws InterruptedException {
-
-        facebookLoginPage.enterEmail("someemail@address.com");
-        facebookLoginPage.enterPassword("pass");
-        facebookHomePage = facebookLoginPage.btnLoginClick();
         Thread.sleep(3000);
 
     }

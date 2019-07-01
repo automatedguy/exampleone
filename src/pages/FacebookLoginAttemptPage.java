@@ -1,4 +1,4 @@
-package base;
+package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,10 +16,10 @@ public class FacebookLoginAttemptPage extends FacebookLoginPage {
         super(iDriver);
     }
 
-    public FacebookHomePage btnLoginClick(){
+    public FacebookNavigationBar clickOnLoginButton(){
         webElement = buttonLogIn;
         clickButton();
-        return initFacebookHomePage();
+        return initFacebookNavigationBar();
     }
 
     public FacebookLoginAttemptPage clickLoginBtnFail() {
