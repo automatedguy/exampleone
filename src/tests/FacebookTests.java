@@ -6,6 +6,8 @@ import org.testng.annotations.*;
 import pages.FacebookCreatePostBox;
 import pages.FacebookNavigationBar;
 
+import static base.Settings.*;
+
 public class FacebookTests extends BaseTest {
 
     private FacebookNavigationBar facebookNavigationBar;
@@ -15,11 +17,14 @@ public class FacebookTests extends BaseTest {
     @Test
     public void postSomething() throws InterruptedException {
 
-        facebookLoginPage.enterEmail("59897505100");
-        facebookLoginPage.enterPassword("jona1981br");
+        facebookLoginPage.enterEmail(FACEBOOK_USER);
+        facebookLoginPage.enterPassword(FACEBOOK_PASS);
         facebookNavigationBar = facebookLoginPage.clickOnLoginButton();
+
         facebookCreatePost = facebookNavigationBar.clickOnStart();
         facebookCreatePostBox = facebookCreatePost.clickOnCreatePost();
+        facebookCreatePostBox.enterPost(CRAPPY_POST);
+        facebookCreatePostBox.clickOnPostButton();
 
         Thread.sleep(3000);
 

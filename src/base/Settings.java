@@ -7,5 +7,8 @@ public class Settings {
     public static final String RESOURCES = "src/resources/";
     public static final String CHROMEDRIVER =  "chromedriver.exe";
 
+    public static final String FACEBOOK_USER = "59897505100";
+    public static final String FACEBOOK_PASS = "jona1981br";
 
+    public static final String CRAPPY_POST = "This is my crappy post... proud of if";
 }
