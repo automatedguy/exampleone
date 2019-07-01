@@ -10,5 +10,5 @@ public class Settings {
     public static final String FACEBOOK_USER = "59897505100";
     public static final String FACEBOOK_PASS = "jona1981br";
 
-    public static final String CRAPPY_POST = "This is my crappy post... proud of if";
+    public static final String CRAPPY_POST = "This is my crappy post... and I'm proud of it.";
 }

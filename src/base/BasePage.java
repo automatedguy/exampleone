@@ -1,9 +1,12 @@
 package base;
 
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import pages.*;
+
 
 public class BasePage {
 
@@ -15,11 +18,27 @@ public class BasePage {
     }
 
     public void enterText(String userEmail){
-        webElement.sendKeys(userEmail);
+        boolean entered = false;
+        while(!entered) {
+            try {
+                webElement.sendKeys(userEmail);
+                entered = true;
+                break;
+            } catch(NoSuchElementException e) {
+            }
+        }
     }
 
     public void clickButton(){
-        webElement.click();
+        boolean clicked = false;
+        while(!clicked) {
+            try {
+                webElement.click();
+                clicked = true;
+                break;
+            } catch(StaleElementReferenceException e) {
+            }
+        }
     }
 
     public boolean isElementDisplayed(){
