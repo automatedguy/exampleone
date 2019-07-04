@@ -6,7 +6,7 @@ import org.testng.annotations.*;
 import pages.FacebookCreatePostBox;
 import pages.FacebookNavigationBar;
 
-import static base.Settings.*;
+import static base.BaseSettings.*;
 
 public class FacebookTests extends BaseTest {
 

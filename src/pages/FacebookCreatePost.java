@@ -1,14 +1,13 @@
 package pages;
 
 import base.BasePage;
+import base.BaseElement;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 public class FacebookCreatePost extends BasePage {
 
-    @FindBy(xpath = "//span[text()='Crear publicación']")
-    WebElement createPost;
+    private BaseElement createPost;
 
     public FacebookCreatePostBox clickOnCreatePost(){
         webElement = createPost;
@@ -17,5 +16,7 @@ public class FacebookCreatePost extends BasePage {
     }
     public FacebookCreatePost(WebDriver iDriver) {
         super(iDriver);
+
+        createPost = new BaseElement(By.xpath("//span[text()='Crear publicación']"), iDriver);
     }
 }

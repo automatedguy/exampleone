@@ -1,6 +1,6 @@
 package base;
 
-public class Settings {
+public class BaseSettings {
 
     public static final String BASE_URL = "https://www.facebook.com/";
 

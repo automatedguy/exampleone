@@ -1,24 +1,24 @@
 package pages;
 
 import base.BasePage;
+import base.BaseElement;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 public class FacebookNavigationBar extends BasePage {
 
-    @FindBy(xpath = "//*[@id='pagelet_bluebar']//a[text()='Inicio']")
-    WebElement homeIcon;
-
-
-    public FacebookNavigationBar(WebDriver iDriver) {
-        super(iDriver);
-    }
+    private BaseElement homeIcon;
 
     public FacebookCreatePost clickOnStart() {
         webElement = homeIcon;
         clickButton();
         return initFacebookCreatePost();
+    }
+
+    public FacebookNavigationBar(WebDriver iDriver) {
+        super(iDriver);
+
+        homeIcon = new BaseElement(By.xpath("//*[@id='pagelet_bluebar']//a[text()='Inicio']"), iDriver);
     }
 }
 

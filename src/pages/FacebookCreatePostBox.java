@@ -1,17 +1,14 @@
 package pages;
 
 import base.BasePage;
+import base.BaseElement;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 public class FacebookCreatePostBox extends BasePage {
 
-    @FindBy(xpath = "//div[@aria-autocomplete='list']")
-    WebElement inputPost;
-
-    @FindBy(xpath = "//button//span[text()='Compartir']")
-    WebElement btnPost;
+    private BaseElement inputPost;
+    private BaseElement btnPost;
 
     public void enterPost(String somePost){
         webElement = inputPost;
@@ -25,5 +22,8 @@ public class FacebookCreatePostBox extends BasePage {
 
     public FacebookCreatePostBox(WebDriver iDriver) {
         super(iDriver);
+
+        inputPost = new BaseElement(By.xpath("//div[@aria-autocomplete='list']"), iDriver);
+        btnPost = new BaseElement(By.xpath("//button//span[text()='Compartir']"), iDriver);
     }
 }

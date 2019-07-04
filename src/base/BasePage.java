@@ -1,9 +1,7 @@
 package base;
 
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import pages.*;
 
@@ -11,7 +9,7 @@ import pages.*;
 public class BasePage {
 
     protected WebDriver driver;
-    protected WebElement webElement;
+    protected BaseElement webElement;
 
     public BasePage (WebDriver iDriver){
         this.driver = iDriver;
@@ -30,48 +28,28 @@ public class BasePage {
     }
 
     public void clickButton(){
-        boolean clicked = false;
-        while(!clicked) {
-            try {
-                webElement.click();
-                clicked = true;
-                break;
-            } catch(StaleElementReferenceException e) {
-            }
-        }
+        webElement.click();
     }
 
     public boolean isElementDisplayed(){
-        if(webElement.isDisplayed()){
-            return true;
-        } else {
-            return false;
-        }
+        return webElement.isDisplayed();
     }
 
     // Page Factories
 
     public FacebookLoginPage initFacebookLoginPage(){
-        return PageFactory.initElements(driver, FacebookLoginPage.class);
-    }
-
-    public FacebookLoginAttemptPage initFacebookLoginAttemptPage(){
-        return PageFactory.initElements(driver, FacebookLoginAttemptPage.class);
-    }
-
-    public FacebookHomePage initFacebookHomePage(){
-        return PageFactory.initElements(driver, FacebookHomePage.class);
+        return new FacebookLoginPage(driver);
     }
 
     public FacebookCreatePost initFacebookCreatePost(){
-        return PageFactory.initElements(driver, FacebookCreatePost.class);
+        return new FacebookCreatePost(driver);
     }
 
     public FacebookCreatePostBox initFacebookCreatePostBox(){
-        return PageFactory.initElements(driver, FacebookCreatePostBox.class);
+        return new FacebookCreatePostBox(driver);
     }
 
     public FacebookNavigationBar initFacebookNavigationBar(){
-        return PageFactory.initElements(driver, FacebookNavigationBar.class);
+        return new FacebookNavigationBar(driver);
     }
 }
