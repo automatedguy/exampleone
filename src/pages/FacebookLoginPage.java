@@ -22,7 +22,7 @@ public class FacebookLoginPage extends BasePage {
     public FacebookNavigationBar clickOnLoginButton() {
         webElement = buttonLogIn;
         clickButton();
-        return initFacebookNavigationBar();
+        return this.initPage.facebookNavigationBar();
     }
 
     public void enterEmail(String userEmail){

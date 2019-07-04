@@ -4,19 +4,19 @@ import org.openqa.selenium.*;
 
 public class BaseElement {
 
-    protected WebDriver webDriver;
-    protected WebElement webElement;
+    private WebDriver webDriver;
+    private WebElement webElement;
 
     public BaseElement(By byLocator, WebDriver webDriver) {
         this.webDriver = webDriver;
         this.webElement = findPageElement(byLocator);
     }
 
-    public void sendKeys(String inputString) {
+    void sendKeys(String inputString) {
         this.webElement.sendKeys(inputString);
     }
 
-    public void click() {
+    void click() {
         boolean clicked = false;
         while (!clicked) {
             try {
@@ -28,13 +28,6 @@ public class BaseElement {
         }
     }
 
-    public boolean isDisplayed() {
-        if (webElement.isDisplayed()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public WebElement findPageElement(By byLocator) {
         boolean isFound = false;

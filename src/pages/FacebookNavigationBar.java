@@ -12,7 +12,7 @@ public class FacebookNavigationBar extends BasePage {
     public FacebookCreatePost clickOnStart() {
         webElement = homeIcon;
         clickButton();
-        return initFacebookCreatePost();
+        return this.initPage.facebookCreatePost();
     }
 
     public FacebookNavigationBar(WebDriver iDriver) {

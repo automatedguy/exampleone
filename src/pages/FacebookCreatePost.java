@@ -12,7 +12,7 @@ public class FacebookCreatePost extends BasePage {
     public FacebookCreatePostBox clickOnCreatePost(){
         webElement = createPost;
         clickButton();
-        return initFacebookCreatePostBox();
+        return this.initPage.facebookCreatePostBox();
     }
     public FacebookCreatePost(WebDriver iDriver) {
         super(iDriver);

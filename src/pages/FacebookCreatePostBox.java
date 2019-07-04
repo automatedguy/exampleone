@@ -18,6 +18,7 @@ public class FacebookCreatePostBox extends BasePage {
     public boolean clickOnPostButton(){
         webElement = btnPost;
         clickButton();
+        //TODO: need to refactor this shitty part...
         return isElementDisplayed("(//div[@data-testid='post_message'])[1]//p[contains(text(), 'This is my crappy post')]");
     }
 

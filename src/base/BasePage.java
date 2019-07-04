@@ -2,48 +2,31 @@ package base;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import pages.*;
-
-import java.util.concurrent.TimeUnit;
 
 
 public class BasePage {
 
-    protected WebDriver driver;
+    private WebDriver driver;
     protected BaseElement webElement;
+    protected BasePageFactory initPage;
 
     public BasePage (WebDriver iDriver){
         this.driver = iDriver;
+        this.initPage = new BasePageFactory(iDriver);
     }
 
-    public void enterText(String userEmail){
+    protected void enterText(String userEmail){
         webElement.sendKeys(userEmail);
     }
 
-    public void clickButton(){
+    protected void clickButton(){
         webElement.click();
     }
 
-    public boolean isElementDisplayed(String elementLocator){
+    protected boolean isElementDisplayed(String elementLocator){
         return driver.findElement(By.xpath(elementLocator)).isDisplayed();
     }
 
-    // Page Factories
 
-    public FacebookLoginPage initFacebookLoginPage(){
-        return new FacebookLoginPage(driver);
-    }
-
-    public FacebookCreatePost initFacebookCreatePost(){
-        return new FacebookCreatePost(driver);
-    }
-
-    public FacebookCreatePostBox initFacebookCreatePostBox(){
-        return new FacebookCreatePostBox(driver);
-    }
-
-    public FacebookNavigationBar initFacebookNavigationBar(){
-        return new FacebookNavigationBar(driver);
-    }
 }
