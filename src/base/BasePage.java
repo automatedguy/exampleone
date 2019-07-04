@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pages.*;
 
+import java.util.concurrent.TimeUnit;
+
 
 public class BasePage {
 
@@ -25,10 +27,6 @@ public class BasePage {
 
     public boolean isElementDisplayed(String elementLocator){
         return driver.findElement(By.xpath(elementLocator)).isDisplayed();
-    }
-
-    public void assertThatPostAdded(WebElement newPost){
-
     }
 
     // Page Factories

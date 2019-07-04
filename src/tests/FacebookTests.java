@@ -26,6 +26,5 @@ public class FacebookTests extends BaseTest {
         facebookCreatePostBox = facebookCreatePost.clickOnCreatePost();
         facebookCreatePostBox.enterPost(CRAPPY_POST);
         assertTrue(facebookCreatePostBox.clickOnPostButton());
-
     }
 }
