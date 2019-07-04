@@ -25,7 +25,6 @@ public class BaseTest {
         chromeOptions.addArguments("--disable-notifications");
         driver = new ChromeDriver(chromeOptions);
         basePage = new BasePage(driver);
-
     }
 
     @AfterSuite

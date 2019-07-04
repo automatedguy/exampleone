@@ -7,17 +7,9 @@ import org.openqa.selenium.WebDriver;
 
 public class FacebookLoginPage extends BasePage {
 
-    public BaseElement inputEmail;
-    public BaseElement inputPassword;
-    public BaseElement buttonLogIn;
-
-    public FacebookLoginPage(WebDriver iDriver) {
-        super(iDriver);
-
-        inputEmail = new BaseElement(By.id("email"), iDriver);
-        inputPassword = new BaseElement(By.id("pass"), iDriver);
-        buttonLogIn = new BaseElement(By.xpath("//input[@value='Log In']"), iDriver);
-    }
+    private BaseElement inputEmail;
+    private BaseElement inputPassword;
+    private BaseElement buttonLogIn;
 
     public FacebookNavigationBar clickOnLoginButton() {
         webElement = buttonLogIn;
@@ -35,4 +27,11 @@ public class FacebookLoginPage extends BasePage {
         enterText(userPassword);
     }
 
+    public FacebookLoginPage(WebDriver iDriver) {
+        super(iDriver);
+
+        inputEmail = new BaseElement(By.id("email"), iDriver);
+        inputPassword = new BaseElement(By.id("pass"), iDriver);
+        buttonLogIn = new BaseElement(By.xpath("//input[@value='Log In']"), iDriver);
+    }
 }
