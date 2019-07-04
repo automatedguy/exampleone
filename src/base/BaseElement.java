@@ -8,8 +8,8 @@ public class BaseElement {
     protected WebElement webElement;
 
     public BaseElement(By byLocator, WebDriver webDriver) {
-        this.webElement = findPageElement(byLocator);
         this.webDriver = webDriver;
+        this.webElement = findPageElement(byLocator);
     }
 
     public void sendKeys(String inputString) {
@@ -17,7 +17,15 @@ public class BaseElement {
     }
 
     public void click() {
-        this.webElement.click();
+        boolean clicked = false;
+        while (!clicked) {
+            try {
+                this.webElement.click();
+                clicked = true;
+            } catch (StaleElementReferenceException staleElementReference) {
+                //TODO: add logs here
+            }
+        }
     }
 
     public boolean isDisplayed() {
@@ -37,8 +45,6 @@ public class BaseElement {
                 webElement = this.webDriver.findElement(byLocator);
                 break;
             } catch (NoSuchElementException noSuchElement) {
-                //TODO: add logs here
-            } catch (StaleElementReferenceException staleElementReference) {
                 //TODO: add logs here
             }
         }

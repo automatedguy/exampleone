@@ -7,6 +7,7 @@ import pages.FacebookCreatePostBox;
 import pages.FacebookNavigationBar;
 
 import static base.BaseSettings.*;
+import static org.testng.Assert.assertTrue;
 
 public class FacebookTests extends BaseTest {
 
@@ -15,7 +16,7 @@ public class FacebookTests extends BaseTest {
     private FacebookCreatePostBox facebookCreatePostBox;
 
     @Test
-    public void postSomething() throws InterruptedException {
+    public void createPost() {
 
         facebookLoginPage.enterEmail(FACEBOOK_USER);
         facebookLoginPage.enterPassword(FACEBOOK_PASS);
@@ -24,10 +25,7 @@ public class FacebookTests extends BaseTest {
         facebookCreatePost = facebookNavigationBar.clickOnStart();
         facebookCreatePostBox = facebookCreatePost.clickOnCreatePost();
         facebookCreatePostBox.enterPost(CRAPPY_POST);
-        facebookCreatePostBox.clickOnPostButton();
-
-        Thread.sleep(3000);
+        assertTrue(facebookCreatePostBox.clickOnPostButton());
 
     }
-
 }

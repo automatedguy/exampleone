@@ -1,8 +1,8 @@
 package base;
 
-import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.WebElement;
 import pages.*;
 
 
@@ -16,23 +16,19 @@ public class BasePage {
     }
 
     public void enterText(String userEmail){
-        boolean entered = false;
-        while(!entered) {
-            try {
-                webElement.sendKeys(userEmail);
-                entered = true;
-                break;
-            } catch(NoSuchElementException e) {
-            }
-        }
+        webElement.sendKeys(userEmail);
     }
 
     public void clickButton(){
         webElement.click();
     }
 
-    public boolean isElementDisplayed(){
-        return webElement.isDisplayed();
+    public boolean isElementDisplayed(String elementLocator){
+        return driver.findElement(By.xpath(elementLocator)).isDisplayed();
+    }
+
+    public void assertThatPostAdded(WebElement newPost){
+
     }
 
     // Page Factories

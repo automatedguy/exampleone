@@ -25,7 +25,6 @@ public class BaseTest {
         chromeOptions.addArguments("--disable-notifications");
         driver = new ChromeDriver(chromeOptions);
         basePage = new BasePage(driver);
-        facebookLoginPage = basePage.initFacebookLoginPage();
     }
 
     @AfterSuite
@@ -36,5 +35,6 @@ public class BaseTest {
     @BeforeMethod
     public void navigateToBaseUrl(){
         driver.navigate().to(BASE_URL);
+        facebookLoginPage = basePage.initFacebookLoginPage();
     }
 }

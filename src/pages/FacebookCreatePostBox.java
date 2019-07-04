@@ -15,9 +15,10 @@ public class FacebookCreatePostBox extends BasePage {
         enterText(somePost);
     }
 
-    public void clickOnPostButton(){
+    public boolean clickOnPostButton(){
         webElement = btnPost;
         clickButton();
+        return isElementDisplayed("(//div[@data-testid='post_message'])[1]//p[contains(text(), 'This is my crappy post')]");
     }
 
     public FacebookCreatePostBox(WebDriver iDriver) {
