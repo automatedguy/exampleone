@@ -17,7 +17,7 @@ public class FacebookTests extends BaseTest {
 
     @Test
     public void createPost() {
-
+        displayTestName("Create Post");
         facebookLoginPage.enterEmail(FACEBOOK_USER);
         facebookLoginPage.enterPassword(FACEBOOK_PASS);
         facebookNavigationBar = facebookLoginPage.clickOnLoginButton();

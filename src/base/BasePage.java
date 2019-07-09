@@ -25,6 +25,4 @@ public class BasePage {
     protected boolean isElementDisplayed(String elementLocator){
         return driver.findElement(By.xpath(elementLocator)).isDisplayed();
     }
-
-
 }

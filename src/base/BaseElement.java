@@ -25,13 +25,14 @@ public class BaseElement {
 
     void click() {
         boolean clicked = false;
+
         while (!clicked) {
             try {
                 logger.info("Clicking on [" + this.elementName + "] [" + this.elementType + "]");
                 this.webElement.click();
                 clicked = true;
             } catch (StaleElementReferenceException staleElementReference) {
-                logger.warn("StaleElementReferenceException: " + staleElementReference);
+                logger.debug("StaleElementReferenceException: " + staleElementReference);
             }
         }
     }
@@ -47,7 +48,7 @@ public class BaseElement {
                 webElement = this.webDriver.findElement(byLocator);
                 break;
             } catch (NoSuchElementException noSuchElement) {
-                logger.warn("NoSuchElementException: " + noSuchElement);
+                logger.debug("NoSuchElementException: " + noSuchElement);
             }
         }
         return webElement;

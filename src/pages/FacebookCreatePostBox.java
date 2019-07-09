@@ -19,13 +19,13 @@ public class FacebookCreatePostBox extends BasePage {
         webElement = btnPost;
         clickButton();
         //TODO: need to refactor this shitty part...
-        return isElementDisplayed("(//div[@data-testid='post_message'])[1]//p[contains(text(), 'This is my crappy post')]");
+        return isElementDisplayed("(//div[@data-testid='post_message'])[1]//p[contains(text(), 'Some shit posting')]");
     }
 
     public FacebookCreatePostBox(WebDriver iDriver) {
         super(iDriver);
 
         inputPost = new BaseElement(By.xpath("//div[@aria-autocomplete='list']"), iDriver, "Post", "Input");
-        btnPost = new BaseElement(By.xpath("//button//span[text()='Compartir']"), iDriver, "Compartir", "Button");
+        btnPost = new BaseElement(By.xpath("//button//span[text()='Compartir']"), iDriver, "Post", "Button");
     }
 }

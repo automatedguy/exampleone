@@ -43,4 +43,10 @@ public class BaseTest {
         driver.navigate().to(BASE_URL);
         facebookLoginPage = basePage.initPage.facebookLoginPage();
     }
+
+    public void displayTestName(String testName){
+        logger.info("Staring test: [" + testName + "]");
+    }
+
+
 }
