@@ -28,6 +28,7 @@ public class BaseElement {
 
         while (!clicked) {
             try {
+                //TODO: Move the logger.info outside the try - catch
                 logger.info("Clicking on [" + this.elementName + "] [" + this.elementType + "]");
                 this.webElement.click();
                 clicked = true;
