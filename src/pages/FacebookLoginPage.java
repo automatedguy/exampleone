@@ -30,8 +30,8 @@ public class FacebookLoginPage extends BasePage {
     public FacebookLoginPage(WebDriver iDriver) {
         super(iDriver);
 
-        inputEmail = new BaseElement(By.id("email"), iDriver);
-        inputPassword = new BaseElement(By.id("pass"), iDriver);
-        buttonLogIn = new BaseElement(By.xpath("//input[@value='Log In']"), iDriver);
+        inputEmail = new BaseElement(By.id("email"), iDriver, "email", "input");
+        inputPassword = new BaseElement(By.id("pass"), iDriver, "password",  "input");
+        buttonLogIn = new BaseElement(By.xpath("//input[@value='Log In']"), iDriver, "Log In", "button");
     }
 }

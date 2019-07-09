@@ -3,9 +3,11 @@ package base;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.log4testng.Logger;
 import pages.FacebookLoginPage;
 
 import static base.BaseSettings.*;
@@ -16,10 +18,13 @@ public class BaseTest {
     private ChromeOptions chromeOptions = null;
     public BasePage basePage = null;
     public FacebookLoginPage facebookLoginPage = null;
+    protected static Logger logger = Logger.getLogger(BaseTest.class);
+
 
     @BeforeSuite
-    public void setUp(){
+    public void setUp(ITestContext context){
         System.setProperty("webdriver.chrome.driver", RESOURCES + CHROMEDRIVER);
+        logger.info("Starting browser: [" + CHROMEDRIVER + "]");
         chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("start-maximized");
         chromeOptions.addArguments("--disable-notifications");
@@ -29,6 +34,7 @@ public class BaseTest {
 
     @AfterSuite
     public void tearDown(){
+        logger.info("Closing Browser");
         driver.quit();
     }
 

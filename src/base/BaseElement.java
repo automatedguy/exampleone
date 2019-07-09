@@ -1,18 +1,25 @@
 package base;
 
 import org.openqa.selenium.*;
+import org.testng.log4testng.Logger;
 
 public class BaseElement {
 
     private WebDriver webDriver;
     private WebElement webElement;
+    private String elementName;
+    private String elementType;
+    private static Logger logger = Logger.getLogger(BaseElement.class);
 
-    public BaseElement(By byLocator, WebDriver webDriver) {
+    public BaseElement(By byLocator, WebDriver webDriver, String elementName, String elementType) {
         this.webDriver = webDriver;
+        this.elementName = elementName;
+        this.elementType = elementType;
         this.webElement = findPageElement(byLocator);
     }
 
     void sendKeys(String inputString) {
+        logger.info("Sending Keys: ["  + inputString + "] to [" + this.elementName + "] [" + this.elementType + "]");
         this.webElement.sendKeys(inputString);
     }
 
@@ -20,10 +27,11 @@ public class BaseElement {
         boolean clicked = false;
         while (!clicked) {
             try {
+                logger.info("Clicking on [" + this.elementName + "] [" + this.elementType + "]");
                 this.webElement.click();
                 clicked = true;
             } catch (StaleElementReferenceException staleElementReference) {
-                //TODO: add logs here
+                logger.warn("StaleElementReferenceException: " + staleElementReference);
             }
         }
     }
@@ -35,10 +43,11 @@ public class BaseElement {
 
         while (!isFound) {
             try {
+                logger.info("Trying to find element: [" + this.elementName + "] [" + this.elementType + "]");
                 webElement = this.webDriver.findElement(byLocator);
                 break;
             } catch (NoSuchElementException noSuchElement) {
-                //TODO: add logs here
+                logger.warn("NoSuchElementException: " + noSuchElement);
             }
         }
         return webElement;
