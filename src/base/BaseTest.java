@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.ITestContext;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -23,16 +24,10 @@ public class BaseTest {
 
     @BeforeSuite
     public void setUp(ITestContext context){
-        System.setProperty("webdriver.chrome.driver", RESOURCES + CHROMEDRIVER);
-        logger.info("Starting browser: [" + CHROMEDRIVER + "]");
-        chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("start-maximized");
-        chromeOptions.addArguments("--disable-notifications");
-        driver = new ChromeDriver(chromeOptions);
-        basePage = new BasePage(driver);
+
     }
 
-    @AfterSuite
+    @AfterMethod
     public void tearDown(){
         logger.info("Closing Browser");
         driver.quit();
@@ -40,6 +35,13 @@ public class BaseTest {
 
     @BeforeMethod
     public void navigateToBaseUrl(){
+        System.setProperty("webdriver.chrome.driver", RESOURCES + CHROMEDRIVER);
+        logger.info("Starting browser: [" + CHROMEDRIVER + "]");
+        chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("start-maximized");
+        chromeOptions.addArguments("--disable-notifications");
+        driver = new ChromeDriver(chromeOptions);
+        basePage = new BasePage(driver);
         driver.navigate().to(BASE_URL);
         facebookLoginPage = basePage.initPage.facebookLoginPage();
     }
@@ -47,6 +49,4 @@ public class BaseTest {
     public void displayTestName(String testName){
         logger.info("Staring test: [" + testName + "]");
     }
-
-
 }

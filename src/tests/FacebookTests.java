@@ -16,8 +16,16 @@ public class FacebookTests extends BaseTest {
     private FacebookCreatePostBox facebookCreatePostBox;
 
     @Test
+    public void login() {
+        displayTestName("Login tests");
+        facebookLoginPage.enterEmail(FACEBOOK_USER);
+        facebookLoginPage.enterPassword(FACEBOOK_PASS);
+        facebookNavigationBar = facebookLoginPage.clickOnLoginButton();
+    }
+
+    @Test
     public void createPost() {
-        displayTestName("Create Post");
+        displayTestName("Create post tests");
         facebookLoginPage.enterEmail(FACEBOOK_USER);
         facebookLoginPage.enterPassword(FACEBOOK_PASS);
         facebookNavigationBar = facebookLoginPage.clickOnLoginButton();
