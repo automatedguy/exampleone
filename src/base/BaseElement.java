@@ -42,14 +42,16 @@ public class BaseElement {
     public WebElement findPageElement(By byLocator) {
         boolean isFound = false;
         WebElement webElement = null;
+        int maxAttemps = 1;
 
-        while (!isFound) {
+        while (!isFound && maxAttemps < 30) {
             try {
-                logger.info("Trying to find element: [" + this.elementName + "] [" + this.elementType + "]");
+                logger.debug("Trying to find element: [" + this.elementName + "] [" + this.elementType + "]");
                 webElement = this.webDriver.findElement(byLocator);
                 break;
             } catch (NoSuchElementException noSuchElement) {
-                logger.debug("NoSuchElementException: " + noSuchElement);
+                logger.debug("NoSuchElementException: " + noSuchElement + String.valueOf(maxAttemps));
+                maxAttemps = maxAttemps + 1;
             }
         }
         return webElement;
