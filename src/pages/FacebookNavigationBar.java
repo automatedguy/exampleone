@@ -24,7 +24,7 @@ public class FacebookNavigationBar extends BasePage {
     public FacebookNavigationBar(WebDriver iDriver) {
         super(iDriver);
 
-        homeIcon = new BaseElement(By.xpath("//*[@id='pagelet_bluebar']//a[text()='Inicio']"), iDriver, "Start", "button");
+        homeIcon = new BaseElement(By.xpath("//*[@id='pagelet_bluebar']//a[text()='Home']"), iDriver, "Start", "button");
     }
 }
 

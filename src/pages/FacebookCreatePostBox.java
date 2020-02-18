@@ -26,6 +26,6 @@ public class FacebookCreatePostBox extends BasePage {
         super(iDriver);
 
         inputPost = new BaseElement(By.xpath("//div[@aria-autocomplete='list']"), iDriver, "Post", "Input");
-        btnPost = new BaseElement(By.xpath("//button//span[text()='Publicar']"), iDriver, "Post", "Button");
+        btnPost = new BaseElement(By.xpath("//button//span[text()='Post']"), iDriver, "Post", "Button");
     }
 }

@@ -17,6 +17,6 @@ public class FacebookCreatePost extends BasePage {
     public FacebookCreatePost(WebDriver iDriver) {
         super(iDriver);
 
-        createPost = new BaseElement(By.xpath("//span[text()='Crear publicación']"), iDriver, "Create Post", "Dialog Box");
+        createPost = new BaseElement(By.xpath("//span[text()='Create Post']"), iDriver, "Create Post", "Dialog Box");
     }
 }
